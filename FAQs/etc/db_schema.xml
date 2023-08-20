@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+
+    <table name="categories" resource="default" engine="innodb" charset="utf8">
+        <column xsi:type="int" name="id" unsigned="true" nullable="false" identity="true"/>
+        <column xsi:type="text" name="title" nullable="false"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="id"/>
+        </constraint>
+    </table>
+
+    <table name="questions" resource="default" engine="innodb" charset="utf8">
+        <column xsi:type="int" name="id" unsigned="true" nullable="false" identity="true"/>
+        <column xsi:type="text" name="title" nullable="false"/>
+        <column xsi:type="text" name="answer" nullable="false"/>
+        <column xsi:type="int" name="category_id" unsigned="true" nullable="false" identity="false"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="id"/>
+        </constraint>
+        <constraint xsi:type="foreign" referenceId="QUESTIONS_CATEGORY_ID_CATEGORIES_ID"  column="category_id" referenceTable="categories"
+                    referenceColumn="id" onDelete="CASCADE"/>
+    </table>
+</schema>

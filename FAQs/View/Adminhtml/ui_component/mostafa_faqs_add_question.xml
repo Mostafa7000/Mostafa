@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">mostafa_faqs_add_question.questions_data_source</item>
+            <item name="deps" xsi:type="string">mostafa_faqs_add_question.questions_data_source</item>
+        </item>
+        <item name="label" xsi:type="string" translate="true">Add New Record</item>
+        <item name="config" xsi:type="array">
+            <item name="dataScope" xsi:type="string">data</item>
+            <item name="namespace" xsi:type="string">mostafa_faqs_add_category</item>
+        </item>
+        <item name="template" xsi:type="string">templates/form/collapsible</item>
+        <item name="buttons" xsi:type="array">
+            <item name="save" xsi:type="array">
+                <item name="name" xsi:type="string">save</item>
+                <item name="label" xsi:type="string" translate="true">save</item>
+                <item name="class" xsi:type="string">primary</item>
+                <item name="url" xsi:type="string">faqs/question/save</item>
+            </item>
+        </item>
+    </argument>
+
+    <dataSource name="grid_record_grid_list_data_source">
+        <argument name="dataProvider" xsi:type="configurableObject">
+            <argument name="class" xsi:type="string">Mostafa\FAQs\Model\DataProvider\Question</argument>
+            <argument name="name" xsi:type="string">questions_data_source</argument>
+            <argument name="primaryFieldName" xsi:type="string">id</argument>
+            <argument name="requestFieldName" xsi:type="string">id</argument>
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="submit_url" xsi:type="url" path="*/*/save"/>
+                </item>
+            </argument>
+        </argument>
+
+        <argument name="data" xsi:type="array">
+            <item name="js_config" xsi:type="array">
+                <item name="component" xsi:type="string">Magento_Ui/js/form/provider</item>
+            </item>
+        </argument>
+
+    </dataSource>
+
+    <fieldset name="New Question">
+        <argument name="data" xsi:type="array">
+            <item name="config" xsi:type="array">
+                <item name="label" xsi:type="string" translate="true">FAQs Form</item>
+            </item>
+        </argument>
+
+        <!-- This field represents form id and is hidden -->
+        <field name="id" formElement="input">
+            <settings>
+                <visible>false</visible>
+                <dataType>text</dataType>
+            </settings>
+        </field>
+
+        <!-- This field has data type 'text' and standard 'input' form element and looks like input -->
+        <field name="title" formElement="input">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="editor" xsi:type="array">
+                        <item name="editorType" xsi:type="string">text</item>
+                        <item name="validation" xsi:type="array">
+                            <item name="required-entry" xsi:type="boolean">true</item>
+                        </item>
+                    </item>
+                </item>
+            </argument>
+
+            <settings>
+                <label>Question</label>
+                <visible>true</visible>
+                <dataType>text</dataType>
+            </settings>
+        </field>
+
+        <field name="answer" formElement="input">
+            <settings>
+                <label>Answer</label>
+                <visible>true</visible>
+                <dataType>text</dataType>
+                <required>true</required>
+            </settings>
+        </field>
+
+        <field formElement="select">
+            <settings>
+                <visible>true</visible>
+                <dataType>text</dataType>
+                <label translate="true">Category</label>
+                <dataScope>category_id</dataScope>
+                <required>true</required>
+            </settings>
+            <formElements>
+                <select>
+                    <settings>
+                        <options class="Mostafa\FAQs\Ui\Component\Form\Option\CategoryOptions"/>
+                        <caption translate="true">-- Please Select --</caption>
+                    </settings>
+                </select>
+            </formElements>
+        </field>
+
+    </fieldset>
+
+</form>

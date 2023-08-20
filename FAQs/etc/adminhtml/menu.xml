@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Mostafa_FAQs::faqs" title="FAQs" module="Mostafa_FAQs" action="faqs/page" sortOrder="5" resource="Magento_Backend::admin"/>
+        <add id="Mostafa_FAQs::questions" parent="Mostafa_FAQs::faqs" title="Questions" module="Mostafa_FAQs" action="faqs/question/index" sortOrder="5" resource="Magento_Backend::admin"/>
+        <add id="Mostafa_FAQs::categories" parent="Mostafa_FAQs::faqs" title="Categories" module="Mostafa_FAQs" action="faqs/category/index" sortOrder="10" resource="Magento_Backend::admin"/>
+    </menu>
+</config>

@@ -1,0 +1,129 @@
+<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">mostafa_faqs_questions.questions_data_source</item>
+            <item name="deps" xsi:type="string">mostafa_faqs_questions.questions_data_source</item>
+        </item>
+
+        <item name="spinner" xsi:type="string">spinner_columns</item>
+
+        <item name="buttons" xsi:type="array">
+            <item name="add" xsi:type="array">
+                <item name="name" xsi:type="string">add</item>
+                <item name="label" xsi:type="string" translate="true">Add new Question</item>
+                <item name="class" xsi:type="string">primary</item>
+                <item name="url" xsi:type="string">faqs/question/Add</item>
+            </item>
+        </item>
+    </argument>
+
+    <dataSource name="nameOfDataSource">
+        <argument name="dataProvider" xsi:type="configurableObject">
+            <argument name="class" xsi:type="string">Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider</argument>
+            <argument name="name" xsi:type="string">questions_data_source</argument>
+            <argument name="primaryFieldName" xsi:type="string">id</argument>
+            <argument name="requestFieldName" xsi:type="string">id</argument>
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="component" xsi:type="string">Magento_Ui/js/grid/provider</item>
+                    <item name="update_url" xsi:type="url" path="mui/index/render"/>
+                    <item name="storageConfig" xsi:type="array">
+                        <item name="indexField" xsi:type="string">id</item>
+                    </item>
+                </item>
+            </argument>
+        </argument>
+    </dataSource>
+
+    <listingToolbar name="listing_top">
+        <argument name="data" xsi:type="array">
+            <item name="config" xsi:type="array">
+                <item name="fixed" xsi:type="boolean">true</item>
+            </item>
+        </argument>
+        <columnsControls name="columns_controls"/>
+        <filterSearch name="fulltext"/>
+        <paging name="listing_paging"/>
+
+        <massaction name="listing_massaction">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="component" xsi:type="string">Magento_Ui/js/grid/tree-massactions</item>
+                </item>
+            </argument>
+
+            <action name="delete">
+                <settings>
+                    <type>delete</type>
+                    <label>Delete</label>
+                    <url path="faqs/question/MassDelete"/>
+                    <confirm>
+                        <message translate="true">Delete FAQs?</message>
+                        <title translate="true">Are you sure you want to delete selected items?</title>
+                    </confirm>
+                </settings>
+            </action>
+        </massaction>
+
+    </listingToolbar>
+
+    <columns name="spinner_columns">
+        <selectionsColumn name="ids">
+            <settings>
+                <resizeDefaultWidth>55</resizeDefaultWidth>
+                <resizeEnabled>false</resizeEnabled>
+                <indexField>id</indexField>
+            </settings>
+        </selectionsColumn>
+
+        <column name="id">
+            <settings>
+                <filter>textRange</filter>
+                <sorting>asc</sorting>
+                <label>ID</label>
+            </settings>
+        </column>
+
+        <column name="title">
+            <settings>
+                <filter>text</filter>
+                <editor>
+                    <editorType>text</editorType>
+                </editor>
+                <label>Question</label>
+            </settings>
+        </column>
+
+        <column name="answer">
+            <settings>
+                <filter>text</filter>
+                <editor>
+                    <editorType>text</editorType>
+                </editor>
+                <label>Answer</label>
+            </settings>
+        </column>
+
+        <column name="categories_title">
+            <settings>
+                <filter>text</filter>
+                <editor>
+                    <editorType>text</editorType>
+                </editor>
+                <label>Category</label>
+            </settings>
+        </column>
+
+        <actionsColumn name="actions" class="Mostafa\FAQs\Ui\Component\Listing\Column\QuestionActions">
+            <settings>
+                <resizeDefaultWidth>107</resizeDefaultWidth>
+                <resizeEnabled>false</resizeEnabled>
+                <indexField>id</indexField>
+            </settings>
+        </actionsColumn>
+
+    </columns>
+
+</listing>
