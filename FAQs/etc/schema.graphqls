@@ -28,8 +28,31 @@ type Mutation {
     (class: "\\Mostafa\\FAQs\\Model\\Resolver\\CategoryCreate")
     deleteCategory(id: Int!): Category @doc(description: "Delete the category and return it") @resolver
     (class: "\\Mostafa\\FAQs\\Model\\Resolver\\CategoryDelete")
+    editCategory(id: Int!, input: CategoryEdit): Category @doc(description: "Edit the category then return it") @resolver
+    (class: "\\Mostafa\\FAQs\\Model\\Resolver\\CategoryEdit")
+    createQuestion(input: QuestionInput!): Question @doc(description: "Create new frequently asked question") @resolver
+    (class: "\\Mostafa\\FAQs\\Model\\Resolver\\QuestionCreate")
+    deleteQuestion(id: Int!): Question @doc(description: "Delete a frequently asked question") @resolver
+    (class: "\\Mostafa\\FAQs\\Model\\Resolver\\QuestionDelete")
+    editQuestion(id: Int!, input: QuestionEdit): Question @doc(description: "Edit a frequently asked question") @resolver
+    (class: "\\Mostafa\\FAQs\\Model\\Resolver\\QuestionEdit")
 }
 
 input CategoryInput {
     title: String!
+}
+input CategoryEdit {
+    title: String
+}
+
+input QuestionEdit {
+    title: String
+    answer: String
+    category_id: Int
+}
+
+input QuestionInput {
+    title: String!
+    answer: String!
+    category_id: Int!
 }
