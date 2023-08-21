@@ -9,7 +9,7 @@ use Magento\Framework\GraphQl\Query\ResolverInterface;
 use Magento\Framework\GraphQl\Schema\Type\ResolveInfo;
 use Magento\Framework\Setup\ModuleDataSetupInterface;
 
-class Categories implements ResolverInterface
+class CategoriesQuery implements ResolverInterface
 {
     public function __construct(
         private readonly ModuleDataSetupInterface $dataSetup

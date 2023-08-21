@@ -4,10 +4,10 @@ schema {
 }
 
 type Query {
-    questions(category_id : Int = 0): [Question!]! @doc(description: "Returns frequently asked questions") @resolver
-    (class: "\\Mostafa\\FAQs\\Model\\Resolver\\Questions")
+    questions(category_id : Int): [Question!]! @doc(description: "Returns frequently asked questions") @resolver
+    (class: "\\Mostafa\\FAQs\\Model\\Resolver\\QuestionsQuery")
     categories: [Category!]! @doc(description: "Returns questions categories") @resolver
-    (class: "\\Mostafa\\FAQs\\Model\\Resolver\\Categories")
+    (class: "\\Mostafa\\FAQs\\Model\\Resolver\\CategoriesQuery")
 }
 
 type Question {
@@ -15,10 +15,21 @@ type Question {
     title: String!
     answer: String!
     category: Category! @doc(description: "Returns category of a question") @resolver
-    (class: "\\Mostafa\\FAQs\\Model\\Resolver\\Category")
+    (class: "\\Mostafa\\FAQs\\Model\\Resolver\\CategoryQuery")
 }
 
 type Category {
     id: Int!
+    title: String!
+}
+
+type Mutation {
+    createCategory(input: CategoryInput): Category @doc(description: "Create new category") @resolver
+    (class: "\\Mostafa\\FAQs\\Model\\Resolver\\CategoryCreate")
+    deleteCategory(id: Int!): Category @doc(description: "Delete the category and return it") @resolver
+    (class: "\\Mostafa\\FAQs\\Model\\Resolver\\CategoryDelete")
+}
+
+input CategoryInput {
     title: String!
 }

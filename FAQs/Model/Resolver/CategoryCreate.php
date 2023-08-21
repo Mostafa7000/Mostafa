@@ -1,6 +1,5 @@
 <?php
 
-
 namespace Mostafa\FAQs\Model\Resolver;
 
 use Magento\Framework\GraphQl\Config\Element\Field;
@@ -9,14 +8,16 @@ use Magento\Framework\GraphQl\Query\Resolver\Value;
 use Magento\Framework\GraphQl\Query\ResolverInterface;
 use Magento\Framework\GraphQl\Schema\Type\ResolveInfo;
 use Magento\Framework\Setup\ModuleDataSetupInterface;
+use Mostafa\FAQs\Model\Category as CategoryModel;
+use Mostafa\FAQs\Model\ResourceModel\Category as CategoryResourceModel;
 
-
-class Questions implements ResolverInterface
+class CategoryCreate implements ResolverInterface
 {
-    const DEFAULT_CATEGORY_ID = 0;
 
     public function __construct(
-        private readonly ModuleDataSetupInterface $dataSetup
+        private ModuleDataSetupInterface $dataSetup,
+        private CategoryModel            $categoryModel,
+        private CategoryResourceModel    $categoryResourceModel
     )
     {
     }
@@ -34,16 +35,12 @@ class Questions implements ResolverInterface
      */
     public function resolve(Field $field, $context, ResolveInfo $info, array $value = null, array $args = null)
     {
-        if ($args && array_key_exists('category_id', $args)) {
-            $query = "SELECT * FROM questions WHERE id=?";
-            $id = $args['category_id'];
-            $data = $this->dataSetup->getConnection()->query($query, [$id])->fetchAll();
-        } else {
-            $query = "SELECT * FROM questions";
-            $data = $this->dataSetup->getConnection()->query($query)->fetchAll();
-        }
-        return $data;
+        // Create new Category
+        $this->categoryModel->addData($args['input']);
+        // Save the model in the database
+        $this->categoryResourceModel->save($this->categoryModel);
+        // Return the newly created Category
+        return $this->categoryModel->getData();
+
     }
 }
-
-
