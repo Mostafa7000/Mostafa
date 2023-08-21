@@ -34,8 +34,8 @@ class QuestionsQuery implements ResolverInterface
      */
     public function resolve(Field $field, $context, ResolveInfo $info, array $value = null, array $args = null)
     {
-        if (array_key_exists('category_id', $args)) {
-            $query = "SELECT * FROM questions WHERE id=?";
+        if ($args && array_key_exists('category_id', $args)) {
+            $query = "SELECT * FROM questions WHERE category_id=?";
             $id = $args['category_id'];
             $data = $this->dataSetup->getConnection()->query($query, [$id])->fetchAll();
         } else {

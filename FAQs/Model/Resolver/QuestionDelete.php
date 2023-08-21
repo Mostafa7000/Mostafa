@@ -41,7 +41,7 @@ class QuestionDelete implements ResolverInterface
         // check if the model got any data in it
         if (!$toBeDeleted)
             return null;
-        
+
         $this->questionResourceModel->delete($this->questionModel);
         return $toBeDeleted;
     }
