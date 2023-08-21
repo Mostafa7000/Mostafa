@@ -1,0 +1,24 @@
+schema {
+    query: Query
+    mutation: Mutation
+}
+
+type Query {
+    questions(category_id : Int = 0): [Question!]! @doc(description: "Returns frequently asked questions") @resolver
+    (class: "\\Mostafa\\FAQs\\Model\\Resolver\\Questions")
+    categories: [Category!]! @doc(description: "Returns questions categories") @resolver
+    (class: "\\Mostafa\\FAQs\\Model\\Resolver\\Categories")
+}
+
+type Question {
+    id: Int!
+    title: String!
+    answer: String!
+    category: Category! @doc(description: "Returns category of a question") @resolver
+    (class: "\\Mostafa\\FAQs\\Model\\Resolver\\Category")
+}
+
+type Category {
+    id: Int!
+    title: String!
+}
