@@ -3,6 +3,8 @@ schema {
     mutation: Mutation
 }
 
+
+
 type Query {
     questions(category_id : Int): [Question!]! @doc(description: "Returns frequently asked questions") @resolver
     (class: "\\Mostafa\\FAQs\\Model\\Resolver\\QuestionsQuery")

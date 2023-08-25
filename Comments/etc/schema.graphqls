@@ -1,0 +1,16 @@
+schema {
+    mutation: Mutation
+}
+
+type Mutation {
+    setComment(input: setCommentInput): Cart @resolver(class: "\\Mostafa\\Comments\\Model\\Resolver\\SetCommentMutation") @doc(description: "Set comment to quote")
+}
+
+input setCommentInput {
+    cart_id: ID!
+    comment: String!
+}
+
+type Cart {
+    comment: String @resolver(class: "\\Mostafa\\Comments\\Model\\Resolver\\CommentQuery")
+}
