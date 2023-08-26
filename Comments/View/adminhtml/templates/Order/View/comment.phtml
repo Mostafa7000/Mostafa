@@ -1,0 +1,37 @@
+<?php /** @var \Mostafa\Comments\Block\Adminhtml\Order\View\Comment $block */ ?>
+<?php $comment = $block->getComment() ?>
+
+<style>
+    .custom-comment-div{
+        margin-top: 40px;
+        margin-bottom: 40px;
+    }
+    .custom-comment-section {
+        background-color: #f8f8f8;
+        border: 1px solid #ccc;
+        padding: 15px;
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+
+    .custom-comment-title {
+        font-size: 20px;
+        margin-bottom: 0px;
+    }
+
+    .custom-comment-text {
+        font-size: 14px;
+        line-height: 1.6;
+    }
+</style>
+<div class="custom-comment-div">
+    <h2 class="custom-comment-title">Customer Comment</h2>
+    <hr>
+    <div class="custom-comment-section">
+        <?php if (isset($comment)): ?>
+            <div class="custom-comment-text"><?= $comment ?></div>
+        <?php endif; ?>
+    </div>
+</div>
+
+

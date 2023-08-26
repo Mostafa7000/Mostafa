@@ -46,7 +46,7 @@ class SetCommentMutation implements ResolverInterface
 
         $storeId = (int)$context->getExtensionAttributes()->getStore()->getId();
         $cart = $this->getCartForUser->execute($maskedCartId, $context->getUserId(), $storeId);
-        $cart->setCustomerNote($comment);
+        $cart->setData('customer_comment', $comment);
         $this->cartSaveHandler->save($cart);
 
         return [

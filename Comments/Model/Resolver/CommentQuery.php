@@ -35,6 +35,6 @@ class CommentQuery implements ResolverInterface
         /** @var Quote $cart */
         $cart = $value['model'];
 
-        return $cart->getCustomerNote();
+        return $cart->getData('customer_comment');
     }
 }
