@@ -27,9 +27,9 @@ class Collection extends SearchResult
     }
 
     /**
-     * @return Collection|void
+     * @return void
      */
-    protected function _initSelect()
+    protected function _initSelect(): void
     {
         parent::_initSelect();
 

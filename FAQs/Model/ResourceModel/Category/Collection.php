@@ -10,4 +10,5 @@ class Collection extends AbstractCollection
     {
         $this->_init('Mostafa\FAQs\Model\Category', 'Mostafa\FAQs\Model\ResourceModel\Category');
     }
+
 }

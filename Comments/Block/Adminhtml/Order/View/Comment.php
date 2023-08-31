@@ -4,9 +4,7 @@ namespace Mostafa\Comments\Block\Adminhtml\Order\View;
 
 use Magento\Backend\Block\Template;
 use Magento\Backend\Block\Template\Context;
-use Magento\Backend\Block\Widget\Tab\TabInterface;
 use Magento\Framework\Registry;
-use Magento\Sales\Api\OrderRepositoryInterface;
 use Magento\Sales\Helper\Admin;
 use Magento\Sales\Model\Order;
 

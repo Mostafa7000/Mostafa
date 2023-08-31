@@ -21,7 +21,9 @@
 
     <dataSource name="nameOfDataSource">
         <argument name="dataProvider" xsi:type="configurableObject">
-            <argument name="class" xsi:type="string">Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider</argument>
+            <argument name="class" xsi:type="string">
+                Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider
+            </argument>
             <argument name="name" xsi:type="string">categories_data_source</argument>
             <argument name="primaryFieldName" xsi:type="string">id</argument>
             <argument name="requestFieldName" xsi:type="string">id</argument>
@@ -61,7 +63,9 @@
                         <item name="url" xsi:type="url" path="faqs/category/MassDelete"/>
                         <item name="confirm" xsi:type="array">
                             <item name="title" xsi:type="string" translate="true">Delete Categories?</item>
-                            <item name="message" xsi:type="string" translate="true">Are you sure you want to delete selected items?</item>
+                            <item name="message" xsi:type="string" translate="true">Are you sure you want to delete
+                                selected items?
+                            </item>
                         </item>
                     </item>
                 </argument>
@@ -72,13 +76,11 @@
 
     <columns name="spinner_columns">
         <selectionsColumn name="ids">
-            <argument name="data" xsi:type="array">
-                <item name="config" xsi:type="array">
-                    <item name="resizeEnabled" xsi:type="boolean">false</item>
-                    <item name="resizeDefaultWidth" xsi:type="string">55</item>
-                    <item name="indexField" xsi:type="string">id</item>
-                </item>
-            </argument>
+            <settings>
+                <resizeEnabled>false</resizeEnabled>
+                <resizeDefaultWidth>55</resizeDefaultWidth>
+                <indexField>id</indexField>
+            </settings>
         </selectionsColumn>
 
         <column name="id">
@@ -105,13 +107,11 @@
         </column>
 
         <actionsColumn name="actions" class="Mostafa\FAQs\Ui\Component\Listing\Column\CategoryActions">
-            <argument name="data" xsi:type="array">
-                <item name="config" xsi:type="array">
-                    <item name="resizeEnabled" xsi:type="boolean">false</item>
-                    <item name="resizeDefaultWidth" xsi:type="string">107</item>
-                    <item name="indexField" xsi:type="string">id</item>
-                </item>
-            </argument>
+            <settings>
+                <resizeEnabled>false</resizeEnabled>
+                <resizeDefaultWidth>107</resizeDefaultWidth>
+                <indexField>id</indexField>
+            </settings>
         </actionsColumn>
 
     </columns>

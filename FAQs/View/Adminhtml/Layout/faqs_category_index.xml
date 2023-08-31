@@ -3,7 +3,6 @@
     <body>
         <referenceContainer name="content">
             <uiComponent name="mostafa_faqs_categories"/>
-<!--            <block class="Mostafa\FAQs\Block\QuestionsBlock" name="categories" template="Mostafa_FAQs::categories_index.phtml"/>-->
         </referenceContainer>
     </body>
 </page>
